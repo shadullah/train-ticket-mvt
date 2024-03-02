@@ -7,10 +7,24 @@
         <div>
             <ul class="flex">
                 <li class="mr-6"><a href="{% url 'home' %}">Home</a></li>
-                <li class="mr-6">Login</li>
-                <li class="mr-6"><a href='{% url 'register' %}'>Register</a></li>
+                <li class="mr-6">Contact us</li>
                 <li class="mr-6">Train Information</li>
-                <li class="">Contact us</li>
+                {% if request.user.is_staff %}
+                <li class="mr-6">Add Train</li>
+                {% endif %}
+                {% if request.user.is_authenticated %}
+                <span class="text-green-600">{{request.user.username}}(balance: {% if request.user.account.balance == 0 %}
+                    <span>00</span>
+                    {% else %}
+                    {{request.user.account.balance}}
+                    {% endif %})</span>
+                <li class="mr-6"><a href="{% url 'info' %}">Profile</a></li>
+                <li class="mr-6">Dashboard</li>
+                <li class="mr-6"><a href="{% url 'logout' %}">Logout</a></li>
+                {% else %}
+                <li class="mr-6"><a href="{% url 'login' %}">Login</a></li>
+                <li class="mr-6"><a href='{% url 'register' %}'>Register</a></li>
+                {% endif %}
             </ul>
         </div>
     </div>
