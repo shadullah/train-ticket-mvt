@@ -1,0 +1,17 @@
+{% load static %}
+<nav class="px-12 py-6 shadow-lg">
+    <div class="flex items-center justify-between">
+        <div class="flex items-center">
+            <img class="w-12 h-16 mr-3" src="{% static 'img/logo.jpg' %}" alt="">
+            <h1>Train Ticket System</h1></div>
+        <div>
+            <ul class="flex">
+                <li class="mr-6"><a href="{% url 'home' %}">Home</a></li>
+                <li class="mr-6">Login</li>
+                <li class="mr-6"><a href='{% url 'register' %}'>Register</a></li>
+                <li class="mr-6">Train Information</li>
+                <li class="">Contact us</li>
+            </ul>
+        </div>
+    </div>
+</nav>

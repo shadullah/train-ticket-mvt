@@ -1,0 +1,16 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+<div class="flex items-center">
+    <div class="w-1/2">
+        <form>
+            <label>From</label>
+            <input type="text" required class="border-b-2">
+            <label>To</label>
+            <input type="text" required class="border-b-2">
+        </form>
+    </div>
+    <div class="w-1/2">
+        <img class="" src="{% static 'img/banner.jpg' %}" alt="">
+    </div>
+</div>
+
+{% endblock %}
