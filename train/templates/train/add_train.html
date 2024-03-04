@@ -1,0 +1,161 @@
+{% extends 'base.html' %} 
+{% block content %} 
+{% if form.non_field_errors %} 
+{%for error in form.non_field_errors %} 
+{{request.user}}
+<div class="bg-red-200 border border-red-400 text-red-400 px-4 py-3">
+  <p class="font-bold">Error!</p>
+  <p class="block sm:inline">{{ error }}</p>
+</div>
+{% endfor %} 
+{% endif %}
+
+<style>
+  input[type="text"] {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+  }
+  select {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+  }
+  input[type="option"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+  }
+</style>
+
+<h1 class="font-bold text-4xl text-center mt-6 py-3 text-yellow-400">Add Train</h1>
+<div class="px-1 py-0.5 bg-yellow-400 w-10 mx-auto mb-5"></div>
+
+<div class="my-8 flex justify-between items-center">
+  <div class="w-1/2 p-12">
+    <img class="rounded-lg"
+      src="https://ecdn.dhakatribune.net/contents/cache/images/640x359x1/uploads/dten/2023/05/07/dttrain.jpeg"
+      alt="#"
+    />
+  </div>
+  <div class="w-1/2">
+    <form method="post" class="w-1/2 bg-green-100 shadow-md rounded-lg px-8 pt-8  mx-auto pb-8 mb-4">
+        {% csrf_token %}
+        {% for hidden_field in form.hidden_fields %} 
+        {{ hidden_field.errors }} 
+        {{ hidden_field }} 
+        {% endfor %}
+
+        <div class="mb-6">
+            <div class="w-full px-3 mb-3">
+                <label class="block uppercase tracking-wide text-xs font-bold mb-2" for="{{ form.name.id_for_label }}">{{ form.name.label }}</label>
+                {{ form.name }}
+                {% if form.name.errors %}
+                {% for error in form.name.errors %}
+                <p class="text-red-600 text-sm pb-2">{{ error }}</p>
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+        <div class="mb-6">
+            <div class="w-full px-3 mb-3">
+                <label class="block uppercase tracking-wide text-xs font-bold mb-2" for="{{ form.time.id_for_label }}">{{ form.time.label }}</label>
+                {{ form.time }}
+                {% if form.time.errors %}
+                {% for error in form.time.errors %}
+                <p class="text-red-600 text-sm pb-2">{{ error }}</p>
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+
+        <div>
+            <div class="w-full px-3 mb-6">
+                <label class="block uppercase tracking-wide text-xs font-bold mb-2" for="{{ form.station.id_for_label }}">
+                    {{ form.station.label }}
+                </label>
+                {{ form.station }}
+                {% if form.station.errors %}
+                {% for error in form.station.errors %}
+                <p class="text-red-600 text-sm pb-2">{{ error }}</p>
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+        <div>
+            <div class="w-full px-3 mb-6">
+                <label class="block uppercase tracking-wide text-xs font-bold mb-2" for="{{ form.destination.id_for_label }}">
+                    {{ form.destination.label }}
+                </label>
+                {{ form.destination }}
+                {% if form.destination.errors %}
+                {% for error in form.destination.errors %}
+                <p class="text-red-600 text-sm pb-2">{{ error }}</p>
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+        
+        {% for hidden_field in form.hidden_fields %}
+        {{ hidden_field.errors }}
+        {{ hidden_field }}
+        {% endfor %}
+        <div class="text-center mt-6">
+            <button class="bg-green-600 rounded-lg w-56 py-3 text-white font-extrabold" type="submit">Add Train</button>
+        </div>
+    </form>
+  </div>
+</div>
+
+<h1 class="text-4xl justify-center font-bold mt-10 flex items-center"><div class="w-1 h-6 mr-2 bg-blue-800"></div>Edit Train Information</h1>
+
+<div class="mx-24 my-12">
+  {% for train in trains %}
+  <div class="mx-auto bg-gray-400 rounded-lg">
+    <div class="rounded-lg">
+      <div class="px-6 mt-3">
+        <h5 class="text-xl font-bold">{{train.name }}</h5>
+        <p class="italic">{{ train.time }}</p>
+      </div>
+      <div class="flex justify-between items-center py-3 px-6">
+        <p class="text-xl">
+            Departure: 
+            {% for cat in trains.station.all %}    
+            {{ cat.name }}
+            {% endfor %}
+        </p>
+        <p class="text-xl">Destination: {{ train.destination }}</p>
+      </div>
+      <div class="flex justify-between p-8">
+        <a href="{% url 'edit_train' train.id %}">
+          <button class="bg-green-600 rounded-lg w-56 py-3 text-white font-extrabold" >
+            Edit 
+          </button>
+        </a>
+        
+      
+        <a href="{% url 'delete_train' train.id %}">
+          <button class="bg-red-600 rounded-lg w-56 py-3 text-white font-extrabold" >
+          Delete
+        </button>
+        </a>
+      
+    </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock %}

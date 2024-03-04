@@ -7,10 +7,11 @@
         <div>
             <ul class="flex">
                 <li class="mr-6"><a href="{% url 'home' %}">Home</a></li>
-                <li class="mr-6">Contact us</li>
-                <li class="mr-6">Train Information</li>
+                <li class="mr-6"><a href="{% url 'train_list' %}">Train Information</a></li>
                 {% if request.user.is_staff %}
-                <li class="mr-6">Add Train</li>
+                <li class="mr-6">
+                    <a href="{% url 'add_train' %}">Add Train</a>
+                </li>
                 {% endif %}
                 {% if request.user.is_authenticated %}
                 <span class="text-green-600">{{request.user.username}}(balance: {% if request.user.account.balance == 0 %}
