@@ -45,7 +45,6 @@ INSTALLED_APPS = [
     'account',
     'core',
     'train',
-    'multiselectfield',
     'transaction',
 
     'django_browser_reload',
