@@ -9,4 +9,5 @@ urlpatterns = [
     path('', HomeView.as_view(), name='home'),
     path('accounts/', include('account.urls')),
     path('train/', include('train.urls')),
+    path('<slug:station_slug>', HomeView.as_view(),name='station_wise'),
 ]

@@ -12,6 +12,7 @@ TIME_SLOT=(
 
 DESTINATION=(
     ('Sylhet','Sylhet'),
+    ('Sunamganj','Sunamganj'),
     ('Dhaka','Dhaka'),
     ('Chittagong','Chittagong'),
 )
