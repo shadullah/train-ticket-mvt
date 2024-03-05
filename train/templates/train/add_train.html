@@ -40,8 +40,8 @@
   }
 </style>
 
-<h1 class="font-bold text-4xl text-center mt-6 py-3 text-yellow-400">Add Train</h1>
-<div class="px-1 py-0.5 bg-yellow-400 w-10 mx-auto mb-5"></div>
+<h1 class="font-bold text-4xl text-center mt-6 py-3 text-gray-600">Add Train</h1>
+<div class="px-1 py-0.5 bg-green-400 w-10 mx-auto mb-5"></div>
 
 <div class="my-8 flex justify-between items-center">
   <div class="w-1/2 p-12">
@@ -117,45 +117,6 @@
         </div>
     </form>
   </div>
-</div>
-
-<h1 class="text-4xl justify-center font-bold mt-10 flex items-center"><div class="w-1 h-6 mr-2 bg-blue-800"></div>Edit Train Information</h1>
-
-<div class="mx-24 my-12">
-  {% for train in trains %}
-  <div class="mx-auto bg-gray-400 rounded-lg">
-    <div class="rounded-lg">
-      <div class="px-6 mt-3">
-        <h5 class="text-xl font-bold">{{train.name }}</h5>
-        <p class="italic">{{ train.time }}</p>
-      </div>
-      <div class="flex justify-between items-center py-3 px-6">
-        <p class="text-xl">
-            Departure: 
-            {% for cat in trains.station.all %}    
-            {{ cat.name }}
-            {% endfor %}
-        </p>
-        <p class="text-xl">Destination: {{ train.destination }}</p>
-      </div>
-      <div class="flex justify-between p-8">
-        <a href="{% url 'edit_train' train.id %}">
-          <button class="bg-green-600 rounded-lg w-56 py-3 text-white font-extrabold" >
-            Edit 
-          </button>
-        </a>
-        
-      
-        <a href="{% url 'delete_train' train.id %}">
-          <button class="bg-red-600 rounded-lg w-56 py-3 text-white font-extrabold" >
-          Delete
-        </button>
-        </a>
-      
-    </div>
-    </div>
-  </div>
-  {% endfor %}
 </div>
 
 {% endblock %}

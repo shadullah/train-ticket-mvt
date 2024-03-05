@@ -14,11 +14,30 @@
       <div class="flex justify-between items-center py-3 px-6">
         <p class="text-xl">
             Departure: 
-            {% for cat in trains.station.all %}    
-            {{ cat.name }}
+            {% for cat in train.station.all %}    
+              {{ cat.name }}
             {% endfor %}
         </p>
         <p class="text-xl">Destination: {{ train.destination }}</p>
+      </div>
+      <div class="flex justify-between p-8">
+      {% if request.user.is_staff %}
+        <a href="{% url 'edit_train' train.id %}">
+          <button class="bg-green-600 rounded-lg w-56 py-3 text-white font-extrabold" >
+            Edit 
+          </button>
+        </a>
+        <a href="{% url 'delete_train' train.id %}">
+          <button class="bg-red-600 rounded-lg w-56 py-3 text-white font-extrabold" >
+          Delete
+        </button>
+        </a>
+        {% endif %}
+        <a href="{% url 'details_train' train.id %}">
+          <button class="bg-green-600 rounded-lg w-56 py-3 text-white font-extrabold" >
+          Details
+        </button>
+        </a>
       </div>
     </div>
   </div>

@@ -3,6 +3,7 @@ from django.views.generic import FormView
 from .forms import AddTrainForm,TrainInfoUpdateForm
 from django.urls import reverse_lazy
 from .models import Train_list
+from django.views.generic import DetailView
 
 # Create your views here.
 class Add_trainView(FormView):
@@ -27,12 +28,34 @@ def train_list(req):
     data= Train_list.objects.all()
     return render(req, 'train/train_list.html', {'trains': data})
 
+
+class Detail_train(DetailView):
+    model = Train_list
+    pk_url_kwarg = 'id'
+    template_name= 'train/detail_train.html'
+    context_object_name = 'train'
+
+    # def post(self, req, *args, **kwargs):
+    #     train = self.get_object()
+    #     return self.get(req, *args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        train = self.get_object()
+        stations = train.station.all()
+        seat_numbers = train.seat_number.split(",") if train.seat_number else []  # Split seat_number string into a list
+        context['stations'] = stations  # Pass the related stations to the context
+        context['seat_numbers'] = seat_numbers 
+        return context
+
+
 def editTrainInfo(req,id):
-    train = Train_list.objects.get(pk=id)
+    train = Train_list.objects.filter(pk=id).first()
     edit_form = TrainInfoUpdateForm(instance=train)
 
     if req.method=='POST':
         edit_form = TrainInfoUpdateForm(req.POST,instance=train)
+        # print(edit_form)
         if edit_form.is_valid():
             edit_form.save()
             return redirect('home')
