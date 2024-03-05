@@ -45,7 +45,10 @@ INSTALLED_APPS = [
     'account',
     'core',
     'train',
-    'django_browser_reload'
+    'multiselectfield',
+    'transaction',
+
+    'django_browser_reload',
 ]
 
 MIDDLEWARE = [

@@ -10,4 +10,5 @@ urlpatterns = [
     path('accounts/', include('account.urls')),
     path('train/', include('train.urls')),
     path('<slug:station_slug>', HomeView.as_view(),name='station_wise'),
+    path('transaction', include('transaction.urls')),
 ]

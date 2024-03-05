@@ -4,6 +4,7 @@ from .forms import AddTrainForm,TrainInfoUpdateForm
 from django.urls import reverse_lazy
 from .models import Train_list
 from django.views.generic import DetailView
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 class Add_trainView(FormView):
@@ -27,7 +28,6 @@ class Add_trainView(FormView):
 def train_list(req):
     data= Train_list.objects.all()
     return render(req, 'train/train_list.html', {'trains': data})
-
 
 class Detail_train(DetailView):
     model = Train_list
