@@ -5,10 +5,10 @@
 </h1>
 
 <div>
-    <div>
-        <h1>{{train.name}}</h1>
-        <h1>{{train.time}}</h1>
-        <h1>{{train.seat}}</h1>
+    <div class="my-12 p-12">
+        <h1>Train Name: {{train.name}}</h1>
+        <h1>Departure Time: {{train.time}}</h1>
+        <!-- <h1>{{train.seat}}</h1> -->
         {% for station in stations %}
         <h1>Departure: {{station.name}}</h1>
         {% endfor %}
@@ -18,6 +18,7 @@
         {% for seat_number in seat_numbers %}
         <h1>{{ seat_number }}</h1>
         {% endfor %}
+        <button class="px-3 py-2 bg-green-600 text-white rounded-lg">Book Ticket</button>
     </div>
 </div>
 
