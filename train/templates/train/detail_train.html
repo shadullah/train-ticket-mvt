@@ -14,11 +14,13 @@
         {% endfor %}
         <h1>Destination: {{train.destination}}</h1>
 
+        <p>Price: {{train.price}}</p>
+        
         <h1>Seat Numbers:</h1>
         {% for seat_number in seat_numbers %}
         <h1>{{ seat_number }}</h1>
         {% endfor %}
-        <button class="px-3 py-2 bg-green-600 text-white rounded-lg">Book Ticket</button>
+        <button class="px-3 py-2 bg-green-600 text-white rounded-lg" >Book Ticket</button>
     </div>
 </div>
 

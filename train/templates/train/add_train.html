@@ -20,6 +20,15 @@
     box-sizing: border-box;
     transition: border-color 0.3s ease;
   }
+  input[type="number"] {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+  }
   select {
     padding: 12px;
     border: 1px solid #ccc;
@@ -115,6 +124,19 @@
                 {{ form.destination }}
                 {% if form.destination.errors %}
                 {% for error in form.destination.errors %}
+                <p class="text-red-600 text-sm pb-2">{{ error }}</p>
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+        <div>
+            <div class="w-full px-3 mb-6">
+                <label class="block uppercase tracking-wide text-xs font-bold mb-2" for="{{ form.price.id_for_label }}">
+                    {{ form.price.label }}
+                </label>
+                {{ form.price }}
+                {% if form.price.errors %}
+                {% for error in form.price.errors %}
                 <p class="text-red-600 text-sm pb-2">{{ error }}</p>
                 {% endfor %}
                 {% endif %}
