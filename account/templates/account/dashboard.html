@@ -8,16 +8,24 @@
 {% if ticket %}
 
 {% for info in ticket %}
-<div class="my-12 mx-12">
-    <p>Name: {{ info.train.name }}</p>
-    <p>Time: {{ info.train.time }}</p>
-    <p>Departure: 
-        {% for infoDep in info.train.station.all %}
-        {{infoDep.name}}
-        {% endfor %}
-    </p>
-    <p>Destination: {{ info.train.destination }}</p>
-    <p>Price: {{ info.train.price }}</p>
+<div class="my-12 mx-12 w-1/2 mx-auto">
+    <p class="text-2xl text-yellow-500">{{ info.train.name }}</p>
+    <div class="bg-green-600 w-16 h-1 mb-6"></div>
+    <div class="flex  justify-between mb-3">
+        <p class="">Time: {{ info.train.time }}</p>
+        <p>Price: {{ info.train.price }}</p>
+    </div>
+    <div class="flex justify-between mb-3">
+        <p>Departure: 
+            {% for infoDep in info.train.station.all %}
+            {{infoDep.name}}
+            {% endfor %}
+        </p>
+        <p>Destination: {{ info.train.destination }}</p>
+    </div>
+    <div class="text-center">
+        <button class="bg-red-600 rounded-lg px-4 py-2 text-white">Cancel Ticket</button>
+    </div>
 </div>
 {% endfor %}
 
