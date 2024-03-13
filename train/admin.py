@@ -7,3 +7,4 @@ class StationAdmin(admin.ModelAdmin):
 
 admin.site.register(models.Train_list)
 admin.site.register(models.Station, StationAdmin)
+admin.site.register(models.Seat_formation)

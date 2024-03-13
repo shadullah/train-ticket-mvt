@@ -20,6 +20,27 @@
         {% for seat_number in seat_numbers %}
         <h1>{{ seat_number }}</h1>
         {% endfor %}
+        
+        <table>
+          <thead>
+              <tr>
+                  <th>col1</th>
+                  <th>col2</th>
+                  <th>col3</th>
+                  <th>col4</th>
+              </tr>
+          </thead>
+          <tbody>
+              {% for row in seat_rows %}
+              <tr>
+                  {% for seat in row %}
+                  <td><button class="bg-gray-400 px-3 py-2 rounded-lg mx-2 my-2">{{ seat }}</button></td>
+                  {% endfor %}
+              </tr>
+              {% endfor %}
+          </tbody>
+      </table>
+
         <button class="px-3 py-2 bg-green-600 text-white rounded-lg" >Book Ticket</button>
     </div>
 </div>

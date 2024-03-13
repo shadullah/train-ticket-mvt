@@ -43,16 +43,25 @@ class Detail_train(DetailView):
         context = super().get_context_data(**kwargs)
         train = self.get_object()
         stations = train.station.all()
+        seat_formations = train.seat_formation.all()
+        seat_rows = []
         # print(train)
+        
+
+        for seat_form in seat_formations:
+            seat_list = seat_form.name.split()
+            # rows = [seat_list[i:i+2] for i in range(0, len(seat_list),2)]
+            seat_rows.append(seat_list)
+
         if train.seat_number: 
             seat_numbers = train.seat_number.split(",") 
             print(seat_numbers)
         else:
             seat_numbers=[]
         
-          # Split seat_number string into a list
-        context['stations'] = stations  # Pass the related stations to the context
-        context['seat_numbers'] = seat_numbers 
+        context['stations'] = stations 
+        context['seat_numbers'] = seat_numbers
+        context['seat_rows'] = seat_rows
         return context
 
 
