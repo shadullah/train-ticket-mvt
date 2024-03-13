@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+<h1 class="text-3xl text-center font-bold mt-10">Dashboard</h1>
+
+{% if ticket %}
+
+{% for info in ticket %}
+<p>Name: {{ info.train.name }}</p>
+<p>Time: {{ info.train.time }}</p>
+<p>Departure: 
+    {% for infoDep in info.train.station.all %}
+    {{infoDep.name}}
+    {% endfor %}
+</p>
+<p>Destination: {{ info.train.destination }}</p>
+<p>Price: {{ info.train.price }}</p>
+
+{% endfor %}
+
+{% else %}
+<p class="text-xl text-center mt-12 mb-12 md:mb-80">No Tickets Borrowed Yet</p>
+
+{% endif %}
+
+
+{% endblock content %}

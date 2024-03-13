@@ -1,4 +1,6 @@
 from django.db import models
+from django.contrib.auth.models import User
+from account.models import UserAccount
 # Create your models here.
 TIME_SLOT=(
     ('6:00 AM', '6:00 AM'),
@@ -53,3 +55,12 @@ class Train_list(models.Model):
 
     def __str__(self):
         return self.name
+    
+class BorrowedTicket(models.Model):
+    user = models.ForeignKey(User, on_delete = models.CASCADE, null=True, blank = True)
+    train = models.ForeignKey(Train_list, on_delete = models.CASCADE, null=True, blank = True)
+    user_acc = models.ForeignKey(UserAccount, on_delete=models.CASCADE, null=True, default=1, blank=True)
+    # seats = models.ForeignKey(Seat_formation, on_delete = models.CASCADE, null=True, blank = True)
+
+    def __str__(self) -> str:
+        return f"{self.user} - {self.train}"

@@ -20,7 +20,9 @@
                     {{request.user.account.balance}}
                     {% endif %})</span>
                 <li class="mr-6"><a href="{% url 'info' %}">Profile</a></li>
-                <li class="mr-6">Dashboard</li>
+                <li class="mr-6">
+                    <a href="{% url 'dashboard' %}">Dashboard</a>
+                    </li>
                 <li class="mr-6"><a href="{% url 'logout' %}">Logout</a></li>
                 {% else %}
                 <li class="mr-6"><a href="{% url 'login' %}">Login</a></li>

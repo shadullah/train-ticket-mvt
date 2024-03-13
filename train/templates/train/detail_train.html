@@ -26,8 +26,6 @@
               <tr>
                   <th>col1</th>
                   <th>col2</th>
-                  <th>col3</th>
-                  <th>col4</th>
               </tr>
           </thead>
           <tbody>
@@ -41,7 +39,9 @@
           </tbody>
       </table>
 
-        <button class="px-3 py-2 bg-green-600 text-white rounded-lg" >Book Ticket</button>
+        <a href="{% url 'buy' train.id %}">
+          <button class="px-3 py-2 bg-green-600 text-white rounded-lg">Book Ticket</button>
+        </a>
     </div>
 </div>
 

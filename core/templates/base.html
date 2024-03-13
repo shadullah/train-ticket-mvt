@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>train Ticket System</title>
     <link
       rel="stylesheet"
@@ -15,21 +15,15 @@
       rel="stylesheet"
     />
     <style>
-        body {
-          font-family: "Merriweather", serif;
-        }
-      </style>
-</head>
-<body>
-    {% include 'navbar.html' %}
-    {% block body %}
-    <div>
-        {% block content %}
+      body {
+        font-family: "Merriweather", serif;
+      }
+    </style>
+  </head>
+  <body>
+    {% include 'navbar.html' %} {% block body %}
+    <div>{% include 'messages.html' %} {% block content %} {% endblock %}</div>
 
-        {% endblock %}
-    </div>
-
-    {% endblock %}
-    {% include 'footer.html' %}
-</body>
+    {% endblock %} {% include 'footer.html' %}
+  </body>
 </html>

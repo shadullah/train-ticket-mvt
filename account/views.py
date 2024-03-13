@@ -6,6 +6,7 @@ from django.contrib.auth import login,logout,update_session_auth_hash
 from django.contrib.auth.views import LoginView
 from . import forms
 from django.contrib.auth.forms import SetPasswordForm
+from train.models import BorrowedTicket
 
 
 # Create your views here.
@@ -46,6 +47,13 @@ def editProfile(req):
 
 def profileInfo(req):
     return render(req, 'account/profileInfo.html')
+
+
+def dashboard(req):
+    bought_ticket = BorrowedTicket.objects.filter(user= req.user)
+    return render(req, 'account/dashboard.html',{
+        'ticket': bought_ticket
+    })
     
 
 def pass_change2(request):
