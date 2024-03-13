@@ -8,16 +8,17 @@
 {% if ticket %}
 
 {% for info in ticket %}
-<p>Name: {{ info.train.name }}</p>
-<p>Time: {{ info.train.time }}</p>
-<p>Departure: 
-    {% for infoDep in info.train.station.all %}
-    {{infoDep.name}}
-    {% endfor %}
-</p>
-<p>Destination: {{ info.train.destination }}</p>
-<p>Price: {{ info.train.price }}</p>
-
+<div class="my-12 mx-12">
+    <p>Name: {{ info.train.name }}</p>
+    <p>Time: {{ info.train.time }}</p>
+    <p>Departure: 
+        {% for infoDep in info.train.station.all %}
+        {{infoDep.name}}
+        {% endfor %}
+    </p>
+    <p>Destination: {{ info.train.destination }}</p>
+    <p>Price: {{ info.train.price }}</p>
+</div>
 {% endfor %}
 
 {% else %}

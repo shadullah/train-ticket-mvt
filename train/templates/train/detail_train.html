@@ -1,48 +1,57 @@
-{% extends "base.html" %} 
-{% block content %}
-<h1 class="font-bold text-4xl text-center mt-6 py-3 text-green-600">
-  Details
-</h1>
+{% extends "base.html" %} {% block content %}
+<h1 class="font-bold text-4xl text-center mt-6 py-3 text-green-600">Details</h1>
 
-<div>
-    <div class="my-12 p-12">
-        <h1>Train Name: {{train.name}}</h1>
-        <h1>Departure Time: {{train.time}}</h1>
-        <!-- <h1>{{train.seat}}</h1> -->
-        {% for station in stations %}
-        <h1>Departure: {{station.name}}</h1>
-        {% endfor %}
-        <h1>Destination: {{train.destination}}</h1>
-
-        <p>Price: {{train.price}}</p>
-        
-        <h1>Seat Numbers:</h1>
-        {% for seat_number in seat_numbers %}
-        <h1>{{ seat_number }}</h1>
-        {% endfor %}
-        
-        <table>
-          <thead>
-              <tr>
-                  <th>col1</th>
-                  <th>col2</th>
-              </tr>
-          </thead>
-          <tbody>
-              {% for row in seat_rows %}
-              <tr>
-                  {% for seat in row %}
-                  <td><button class="bg-gray-400 px-3 py-2 rounded-lg mx-2 my-2">{{ seat }}</button></td>
-                  {% endfor %}
-              </tr>
-              {% endfor %}
-          </tbody>
-      </table>
-
-        <a href="{% url 'buy' train.id %}">
-          <button class="px-3 py-2 bg-green-600 text-white rounded-lg">Book Ticket</button>
-        </a>
+<div class="">
+  <div class="my-12 px-14 w-1/2 mx-auto">
+    <h1
+      class="text-2xl font-bold text-green-600 p-3 border-b-2 border-yellow-400"
+    >
+      {{train.name}}
+    </h1>
+    <div class="flex justify-between m-6">
+      <h1 class="">Departure Time: {{train.time}}</h1>
+      <h1>Price: {{train.price}}</h1>
     </div>
+    <!-- <h1>{{train.seat}}</h1> -->
+    <div class="flex justify-between m-6">
+      {% for station in stations %}
+      <h1>Departure: {{station.name}}</h1>
+      {% endfor %}
+      <h1>Destination: {{train.destination}}</h1>
+    </div>
+
+    <div class="flex justify-between items-center m-6">
+      <h1>Seat Numbers:</h1>
+
+      <table>
+        <thead>
+          <tr>
+            <th>col1</th>
+            <th>col2</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in seat_rows %}
+          <tr>
+            {% for seat in row %}
+            <td>
+              <button class="bg-gray-400 px-3 py-2 rounded-lg mx-2 my-2">
+                {{ seat }}
+              </button>
+            </td>
+            {% endfor %}
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <a href="{% url 'buy' train.id %}">
+      <button class="w-full py-2 bg-green-600 text-white rounded-lg">
+        Book Ticket
+      </button>
+    </a>
+  </div>
 </div>
 
 {% endblock content %}
