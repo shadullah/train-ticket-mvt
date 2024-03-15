@@ -31,54 +31,78 @@
   }
 </style>
 
-<h1 class="font-bold text-4xl text-center mt-6 py-3 text-yellow-400">Log In</h1>
-<div class="px-1 py-0.5 bg-yellow-400 w-10 mx-auto mb-5"></div>
+<!-- <h1 class="font-bold text-4xl text-center mt-6 py-3 text-yellow-400">Log In</h1>
+<div class="px-1 py-0.5 bg-yellow-400 w-10 mx-auto mb-5"></div> -->
 
-<div class="my-8 flex justify-between items-center">
-  <div class="mx-auto">
-    <img
-      src="https://cdni.iconscout.com/illustration/premium/thumb/sign-up-4922762-4097209.png?f=webp"
+<div class="w-full h-screen block md:flex">
+  <div class="w-full md:w-1/2 h-48 md:h-full">
+    <img class="w-full h-full object-cover"
+      src="https://media.istockphoto.com/id/1614567426/photo/man-hands-hold-and-touch-tablet-pc-with-login-box-travel-concept.jpg?b=1&s=170667a&w=0&k=20&c=e-gpTgHZKfbBA9mAbrwMBPlWgN-AjPsOkL63Hb0gAjM="
       alt="#"
     />
   </div>
-  <div class="mx-auto">
-    <form
-      method="post"
-      class="bg-gray-100 shadow-lg rounded-lg px-16 py-16"
-    >
-      {% csrf_token %} 
-      {% for hidden_field in form.hidden_fields %} 
-      {{ hidden_field.errors }} 
-      {{ hidden_field }} 
-      {% endfor %}
-
-      {% for field in form.visible_fields %}
-      <div>
-        <div class="w-full px-3 mb-6">
-          <label
-            class="block uppercase tracking-wide text-xs font-bold mb-2"
-            for="{{ field.id_for_label }}"
-          >
-            {{ field.label }}
-          </label>
-          <input class="shadow appearance-none border border-gray-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="{{ field.name }}" id="{{ field.id_for_label }}" type="{{ field.widget_type }}">
+  <div class="w-full md:w-1/2">
+    <h1 class="text-sm text-nowrap md:text-xl font-bold ml-6 md:ml-16 text-violet-600 my-6 md:my-12">
+      Welcom To Train Ticket System
+    </h1>
+    <h1 class="text-2xl md:text-3xl text-gray-700 font-bold ml-6 md:ml-16 mt-6 md:mt-12">
+      LOGIN
+    </h1>
+    <p class="text-xs md:text-sm text-nowrap text-gray-700 font-bold ml-6 md:ml-16">
+      Train-ticket-system wants you to be Login
+    </p>
+      <form
+        method="post"
+        class="mx-4 md:mx-14 py-6 md:py-16"
+      >
+        {% csrf_token %} 
+        {% for hidden_field in form.hidden_fields %} 
+        {{ hidden_field.errors }} 
+        {{ hidden_field }} 
+        {% endfor %}
+  
+        {% for field in form.visible_fields %}
+        <div>
+          <div class="w-full px-3 mb-6">
+            <label
+              class="block uppercase tracking-wide text-xs font-bold mb-2"
+              for="{{ field.id_for_label }}"
+            >
+              {{ field.label }}
+            </label>
+            <input class="shadow appearance-none border border-gray-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="{{ field.name }}" id="{{ field.id_for_label }}" type="{{ field.widget_type }}">
+          </div>
         </div>
-      </div>
-      {% if field.errors %}
-      {% for error in field.errors %} 
-      <p class="text-red-600 text-sm italic pb-2">{{ error }}</p>
-      {% endfor %}
-      {% endif %}
-      {% endfor %}
-      <div class="text-center mt-6">
-        <button
-          class="bg-green-600 rounded-lg w-56 py-3 text-white font-extrabold" type="submit"
-        >
-          Login
-        </button>
-      </div>
-    </form>
+        {% if field.errors %}
+        {% for error in field.errors %} 
+        <p class="text-red-600 text-sm italic pb-2">{{ error }}</p>
+        {% endfor %}
+        {% endif %}
+        {% endfor %}
+        <div class="text-center mt-6">
+          <button
+            class="bg-green-600 text-white w-full py-3 cursor-pointer rounded-lg font-bold" type="submit"
+          >
+            Login
+          </button>
+        </div>
+      </form>
+      <p class="ml-16">
+        New Here?
+        <a href="{% url 'register' %}">
+          <span class="underline">
+            Signup here
+          </span>
+        </a>
+      </p>
   </div>
 </div>
+
+<!-- <div class="my-8 flex justify-between items-center">
+  <div class="mx-auto">
+    
+  </div>
+  
+</div> -->
 
 {% endblock %}
