@@ -8,6 +8,7 @@ from . import forms
 from django.contrib.auth.forms import SetPasswordForm
 from train.models import BorrowedTicket
 from .models import UserAccount
+from django.contrib import messages
 
 
 # Create your views here.
@@ -21,6 +22,11 @@ class UserReg(FormView):
         login(self.request, user)
         # print(form.cleaned_data)
         return super().form_valid(form)
+    
+    # def form_invalid(self, form):
+    #     form.add_error(None, "NID is not unique")
+    #     return super().form_invalid(form)
+
     
 
 class UserLoginView(LoginView):
