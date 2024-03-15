@@ -28,7 +28,7 @@ class TransactionCreateMix(LoginRequiredMixin, CreateView):
     
 class DepositeView(TransactionCreateMix):
     form_class = DepositForm
-    title ="Deposite"
+    title ="Get Started To Buy Ticket"
 
     def form_valid(self, form):
         amount = form.cleaned_data.get('amount')

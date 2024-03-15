@@ -16,12 +16,12 @@
 
 <div class="flex items-center justify-center mx-auto my-3 rounded-lg">
   <div class="flex items-center m-4">
-    <a class="bg-green-600 mx-2 px-3 py-2 rounded-lg text-white" href="{% url 'home' %}"
+    <a class="hover:bg-white hover:border-green-600 border-2 bg-green-600 mx-2 px-3 py-2 rounded-lg hover:text-green-600 text-white" href="{% url 'home' %}"
       >All</a
     >
     {% for i in station %}
     <a
-      class="bg-green-600 text-white mx-2 px-3 py-2 rounded-lg"
+      class="hover:bg-white hover:border-green-600 border-2 bg-green-600 hover:text-green-600 text-white mx-2 px-3 py-2 rounded-lg "
       href="{% url 'station_wise' i.slug %}"
       >{{i.name}}</a
     >
@@ -35,7 +35,7 @@
 {% if trains %}
 <div class="mx-24 my-12">
   {% for train in trains %}
-  <div class="mx-auto bg-gray-200 rounded-lg">
+  <div class="mx-auto border-2 my-6 border-gray-200 rounded-lg">
     <div class="rounded-lg">
       <div class="px-6 mt-5 pt-5">
         <h5 class="text-xl font-bold">{{train.name }}</h5>
@@ -51,7 +51,7 @@
         <p class="text-xl">Destination: {{ train.destination }}</p>
         <p>
           <a href="{% url 'details_train' train.id %}">
-            <button class="bg-green-600 rounded-lg w-56 py-3 text-white font-extrabold" >
+            <button class="border-2 border-green-600 rounded-lg w-56 py-3 text-green-600 hover:text-white font-extrabold hover:bg-green-600" >
             Details
           </button>
           </a>
