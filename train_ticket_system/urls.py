@@ -8,6 +8,7 @@ urlpatterns = [
     path("__reload__/", include("django_browser_reload.urls")),
     path('', HomeView.as_view(), name='home'),
     path('accounts/', include('account.urls')),
+    path('dashboard/', include('dashboard.urls')),
     path('train/', include('train.urls')),
     path('<slug:station_slug>', HomeView.as_view(),name='station_wise'),
     path('transaction', include('transaction.urls')),

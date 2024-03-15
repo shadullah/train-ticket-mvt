@@ -6,7 +6,6 @@ from django.contrib.auth import login,logout,update_session_auth_hash
 from django.contrib.auth.views import LoginView
 from . import forms
 from django.contrib.auth.forms import SetPasswordForm
-from train.models import BorrowedTicket
 from .models import UserAccount
 from django.contrib import messages
 
@@ -55,14 +54,6 @@ def editProfile(req):
 def profileInfo(req):
     user_acc = UserAccount.objects.filter(user=req.user)
     return render(req, 'account/profileInfo.html', {'user_acc':user_acc})
-
-
-def dashboard(req):
-    bought_ticket = BorrowedTicket.objects.filter(user= req.user)
-    return render(req, 'account/dashboard.html',{
-        'ticket': bought_ticket
-    })
-    
 
 def pass_change2(request):
     if request.user.is_authenticated:

@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'core',
     'train',
     'transaction',
+    'dashboard',
 
     'django_browser_reload',
 ]

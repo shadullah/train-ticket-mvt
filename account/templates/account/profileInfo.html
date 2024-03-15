@@ -8,8 +8,19 @@
   </div>
   <div class="w-1/2 p-12 mb-10">
     <p class="text-2xl font-bold">
-      Balance: {% for user_bank in user_acc %} {{user_bank.balance}} {% endfor %}
+      Balance: {% for user_bank in user_acc %} {{user_bank.balance}} 
+      
+      {% if user_bank.balance == 0 %}
+        (
+          <a href="{% url 'deposite' %}">
+            <button class="text-sm px-3 py-2 rounded-lg underline">Deposite Here</button>
+          </a>
+        )
+      {% endif %}
+
+      {% endfor %}
     </p>
+    
     <p class="text-2xl font-medium mt-3">NID: {{request.user.account.nid}}</p>
 
     <p class="text-xl mt-3">Username: {{request.user.username}}</p>
