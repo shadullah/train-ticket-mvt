@@ -1,42 +1,7 @@
 {% extends "base.html" %} {% block content %}
 
 <div class="flex h-screen">
-  <div class="w-1/3 shadow-lg p-5">
-    <ul>
-      <li class="my-4 hover:bg-gray-200 py-3 px-2 rounded-lg">
-        <div class="flex">
-          <img
-            class="w-6 h-6 mr-2"
-            src="https://www.svgrepo.com/show/507260/dashboard.svg"
-            alt=""
-          />
-          <p>Dashboard</p>
-        </div>
-      </li>
-      {% if request.user.is_staff %}
-      <li class="my-4 hover:bg-gray-200 py-3 px-2 rounded-lg">
-        <div class="flex">
-          <img
-            class="w-6 h-6 mr-2"
-            src="https://www.svgrepo.com/show/507443/users.svg"
-            alt=""
-          />
-          <p>All users</p>
-        </div>
-      </li>
-      <li class="my-4 hover:bg-gray-200 py-3 px-2 rounded-lg">
-        <div class="flex">
-          <img
-            class="w-6 h-6 mr-2"
-            src="https://www.svgrepo.com/show/447512/tickets-alt.svg"
-            alt=""
-          />
-          <p>Borrowed Tickets</p>
-        </div>
-      </li>
-      {% endif %}
-    </ul>
-  </div>
+  {% include 'core.html' %}
   <div class="w-full">
     <h1 class="text-3xl text-center font-bold mt-10">Dashboard</h1>
     {% if ticket %} {% for info in ticket %}
